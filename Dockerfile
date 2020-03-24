@@ -35,4 +35,3 @@ RUN apt-get -y autoremove && \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 CMD ["apache2", "-X"]
-
