@@ -1,10 +1,13 @@
 # apache-1c
 
+## Build docker image
+`docker build --no-cache -f Dockerfile -t apache-1c:v0.1 .`
+
 ## Check 1c version inside docker image
-`docker run --rm --name test test:v2 /opt/1C/v8.3/x86_64/rac -v`
+`docker run --rm --name apa1c apache-1c:v0.1 /opt/1C/v8.3/x86_64/rac -v`
 
 ## Publish base
-`docker run --rm --name test test:v2 /opt/1C/v8.3/x86_64/webinst -publish -apache24 -wsdir InfoBase -dir /var/www/infobase -connstr "Srvr=SRV-1C;Ref=Infobase;" -confpath /etc/apache2/apache2.conf`
+`docker run --rm --name apa1c apache-1c:v0.1 /opt/1C/v8.3/x86_64/webinst -publish -apache24 -wsdir InfoBase -dir /var/www/infobase -connstr "Srvr=SRV-1C;Ref=Infobase;" -confpath /etc/apache2/apache2.conf`
 
 - `publish` it action publish
 - `apache24` version your apache. If use to Apache 2.2 then should indicate apache22
@@ -14,4 +17,4 @@
 - `confpath` path to config file of your web-server
 
 ## Run docker image
-`docker run --name test -p 8080:80 -d test:v2`
+`docker run --name test -p 8080:80 -d apache-1c:v0.1`
